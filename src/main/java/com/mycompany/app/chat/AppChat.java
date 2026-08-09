@@ -18,6 +18,7 @@ public class AppChat {
     public static void main(String[] args) {
         
         try {
+            System.out.println("comprobacion xq si");
             SocketServer server = new SocketServer(PORT);
             server.start();
             

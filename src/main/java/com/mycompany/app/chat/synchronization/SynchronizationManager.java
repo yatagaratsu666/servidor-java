@@ -4,18 +4,19 @@
  */
 package com.mycompany.app.chat.synchronization;
 
-import java.util.concurrent.locks.ReentrantLock;
+import com.mycompany.app.chat.synchronization.mutex.Mutex;
 
 // es exclusion mutua xq solo un hilo puede entrar a la sección crtica al mismo tiempo
 // no lo olvides :3
+// mutex implementado a mano (sin java.util.concurrent.locks), ver paquete .mutex
 
 public class SynchronizationManager {
 
-    private final ReentrantLock mutex;
+    private final Mutex mutex;
 
     public SynchronizationManager() {
 
-        mutex = new ReentrantLock(true);
+        mutex = new Mutex();
 
     }
 

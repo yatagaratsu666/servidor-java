@@ -11,22 +11,22 @@ package com.mycompany.app.chat.bussiness;
 
 import com.mycompany.app.chat.model.ConversacionPrivada;
 import com.mycompany.app.chat.model.Mensaje;
+import com.mycompany.app.chat.synchronization.mutex.Mutex;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class PrivateChatService {
 
     private final Map<String, ConversacionPrivada> conversations;
 
-    private final ReentrantLock lock;
+    private final Mutex lock;
 
     public PrivateChatService() {
 
         conversations = new ConcurrentHashMap<>();
-        lock = new ReentrantLock(true);
+        lock = new Mutex();
 
     }
 

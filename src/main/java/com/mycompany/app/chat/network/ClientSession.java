@@ -19,9 +19,12 @@ public class ClientSession {
 
     private final ByteBuffer readBuffer;
 
-    private String username;
+    // volatile: username/authenticated se escriben en el hilo que procesa el
+    // LOGIN y se leen desde otros hilos del pool (p.ej. al hacer broadcast),
+    // así que necesitan visibilidad garantizada entre hilos
+    private volatile String username;
 
-    private boolean authenticated;
+    private volatile boolean authenticated;
 
     public ClientSession(SocketChannel channel) {
 

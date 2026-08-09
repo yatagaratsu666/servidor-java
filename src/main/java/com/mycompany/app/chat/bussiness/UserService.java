@@ -9,21 +9,21 @@ package com.mycompany.app.chat.bussiness;
  * @author BRENDA
  */
 import com.mycompany.app.chat.model.Usuario;
+import com.mycompany.app.chat.synchronization.mutex.Mutex;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class UserService {
 
     private final ConcurrentHashMap<String, Usuario> users;
 
-    private final ReentrantLock lock;
+    private final Mutex lock;
 
     public UserService() {
 
         users = new ConcurrentHashMap<>();
-        lock = new ReentrantLock(true);
+        lock = new Mutex();
 
     }
 
